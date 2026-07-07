@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* Tokens */
+:root {
+  --white:        #ffffff;
+  --surface:      #f7f8fa;
+  --border:       #e2e6ea;
+  --border-focus: #2d7dd2;
+
+  --text-primary:   #111827;
+  --text-secondary: #4b5563;
+  --text-muted:     #9ca3af;
+
+  --accent:       #2d7dd2;
+  --accent-hover: #1a65b8;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-card: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+}
+
+/*  Base */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.stApp { background: var(--surface); }
+
+.block-container {
+  max-width: 860px !important;
+  padding: 2.5rem 2rem 4rem !important;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.stApp h1 { font-size: 1.65rem; margin-bottom: .2rem; }
+
+.stApp h2 {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 1.5rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Sub-labels inside columns */
+.stApp h3 {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: .65rem;
+}
+
+p, label, .stMarkdown { color: var(--text-secondary); line-height: 1.6; }
+
+/* Form card */
+[data-testid="stForm"] {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2rem 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+/* Number inputs */
+input[type="number"],
+.stNumberInput input {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  background: var(--white) !important;
+  color: var(--text-primary) !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: .88rem !important;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+input:focus,
+.stNumberInput input:focus {
+  border-color: var(--border-focus) !important;
+  box-shadow: 0 0 0 3px rgba(45,125,210,.12) !important;
+  outline: none !important;
+}
+
+/* Selects */
+[data-baseweb="select"] > div {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  background: var(--white) !important;
+  font-size: .9rem !important;
+  transition: border-color .15s;
+}
+
+[data-baseweb="select"] > div:focus-within {
+  border-color: var(--border-focus) !important;
+  box-shadow: 0 0 0 3px rgba(45,125,210,.12) !important;
+}
+
+/* Radio */
+[data-testid="stRadio"] label { font-size: .9rem; color: var(--text-secondary); }
+
+/* Checkbox */
+[data-testid="stCheckbox"] label { font-size: .9rem; color: var(--text-secondary); }
+
+/* Slider track & thumb */
+[data-testid="stSlider"] [role="slider"] {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Active track fill */
+[data-testid="stSlider"] [data-testid="stSliderThumbValue"] {
+  color: var(--accent) !important;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .8rem;
+}
+
+/* Catch BaseWeb's internal highlight on range ends */
+[data-testid="stSlider"] span[data-baseweb],
+[data-testid="stSlider"] div[data-baseweb] {
+  background: transparent !important;
+  color: var(--text-muted) !important;
+}
+
+/* Dividers */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.75rem 0;
+}
+
+/* Submit button */
+[data-testid="stFormSubmitButton"] button {
+  background: var(--accent) !important;
+  color: var(--white) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  padding: .625rem 1.75rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: .9rem !important;
+  font-weight: 500 !important;
+  letter-spacing: .01em !important;
+  transition: background .15s, transform .1s, box-shadow .15s;
+}
+
+[data-testid="stFormSubmitButton"] button:hover {
+  background: var(--accent-hover) !important;
+  box-shadow: 0 4px 14px rgba(45,125,210,.28) !important;
+  transform: translateY(-1px);
+}
+
+[data-testid="stFormSubmitButton"] button:active { transform: translateY(0); }
+
+/* KTAS result monospace badge */
+[data-testid="stMarkdown"] span[style*="font-size:32px"] {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: -.01em;
+}
+
+/* Charts */
+[data-testid="stImage"],
+[data-testid="stPyplotImage"] {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Expander */
+[data-testid="stExpander"] {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--surface) !important;
+}
+
+[data-testid="stExpander"] summary {
+  font-weight: 500;
+  font-size: .9rem;
+  color: var(--text-secondary);
+  padding: .75rem 1rem;
+}
+
+[data-testid="stExpander"] [data-testid="stMarkdownContainer"] {
+  padding: 0 1rem 1rem;
+  font-size: .875rem;
+  line-height: 1.7;
+}
+
+/* Alerts */
+[data-testid="stAlert"] {
+  border-radius: var(--radius-sm) !important;
+  border-left-width: 3px !important;
+}
+
+/* Footer */
+.stApp .stCaption {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+}
+
+/* Column gap */
+[data-testid="column"] + [data-testid="column"] { padding-left: 1.25rem; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #c1c9d4; }
